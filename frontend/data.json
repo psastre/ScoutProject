@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "photo": "Armani",
+        "name": "Franco",
+        "lastname": "Armani",
+        "age": "37",
+        "team": "1",
+        "position": "Arquero",
+        "nacionality": "Argentina",
+        "gamesPlayed": "389",
+        "foot": "IZQ"
+    }
+]
