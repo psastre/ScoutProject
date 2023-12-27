@@ -1,0 +1,32 @@
+### GameID, Equipo, Nombre Apellido  jugador y Goles ######
+
+SELECT 
+game.gameID,
+goal.goalTeam,
+player.name,
+player.lastname,
+ COUNT(goal.goalID) AS Goles
+FROM game
+JOIN goal
+ON goal.goalGame = game.gameID 
+JOIN player
+ON goal.goalPlayer = player.id
+GROUP BY
+goal.goalPLayer
+
+####################################
+
+### Busca ID de Partido, Nombre de Equipo y Goles por Equipo####
+SELECT 
+game.gameID,
+team.teamName,
+COUNT(goal.goalID) AS Goles
+FROM game
+JOIN goal
+ON goal.goalGame = game.gameID 
+JOIN team
+ON goal.goalTeam = team.teamID
+GROUP BY
+team.teamName
+
+#########################################

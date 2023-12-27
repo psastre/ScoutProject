@@ -10,5 +10,17 @@
         "nacionality": "Argentina",
         "gamesPlayed": "389",
         "foot": "IZQ"
+    },
+    {
+        "id": "2",
+        "photo": "Roncaglia",
+        "name": "Facundo",
+        "lastname": "Roncaglia",
+        "age": "36",
+        "team": "2",
+        "position": "D",
+        "nacionality": "Argentina",
+        "gamesPlayed": "389",
+        "foot": "DER"
     }
 ]
