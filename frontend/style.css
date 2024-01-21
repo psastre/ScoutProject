@@ -1,28 +1,216 @@
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "League Spartan", sans-serif;
+}
+
+body{
+    background-color: #1B1B1B;
+    
+}
+
+#hero{
+ width: 100%;
+ height: 100vh;
+ display: flex;
+}
+
+.container_hero{
+    width: 85%;
+    height: 100vh;
+}
+
+.title_user_nav{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title_container{
+    width: 100%;
+    height: 20%;
+    color: #DDDDDD;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    font-size: 2em;
+}
+
+.title_container a{
+    text-decoration: none;
+    color: #DDDDDD;
+}
+
+.title_container img{
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    fill: #DDDDDD;
+
+}
+.title_section{
+    width: 100%;
+    height: 5%;
+    color: #DDDDDD;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    
+    font-weight: 100;
+}
+
+.title_section h4{
+    font-size: 2.5em;
+margin-right: 15px;
+}
+.title_section a{
+    text-decoration: none;
+    padding: 8px;
+    background-color: #DDDDDD;
+    color: #1B1B1B;
+    border-radius: 15px;
+    font-size: 2em;
+}
+
+
+.user_container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right:10%;
+}
+.user_container a{
+    max-width: 90%;
+    height: 40%; 
+    display: block;
+}
+.user_container img{
+    max-width: 100%;
+    height: 100%; 
+    display: block;
+    fill: white;
+}
+
+
+header{
+    width: 15%;
+    height: 100vh;
+    background-color: #1B1B1B;
+    display: flex;
+    justify-content: center;
+    border-right: 0.5px solid #dddddd8f;
+}
+
+nav{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1B1B1B;
+}
+
+.logo_space{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.logo_space img{
+    max-width: 90%;
+    height: auto; 
+    display: block;
+}
+
+.logo_space h2{
+    font-size: 3em;
+    color: #DDDDDD;
+}
+
+.menu_options ul li{
+    list-style: none;
+    text-decoration: none;
+    margin: 20px;
+    padding: 15px 0;
+}
+
+.menu_options ul li a{
+    font-size: 1.3em;
+    text-decoration: none;
+    color: #DDDDDD; 
+    transition: text-decoration 10s;
+    
+}
+
+.menu_options ul li a:hover{
+    text-decoration: underline;
+
+}
+.nav_second{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 250px;
+}
+
+.divader_nav{
+    height: 1px;
+    width: 70%;
+    background-color: #DDDDDD;
+}
+
+.logout_space ul li{
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.logout_space ul li img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    
+}
+
+.logout_space ul li a{
+    text-decoration: none;
+    font-size: 1em;
+    color: #DDDDDD;
 }
 
 #filters{
     width: 15%;
-    height: 70%;
-    margin-left: 10%;
+    height: 80%;
+    margin-left: 5%;
     margin-top:2%;
     margin-bottom: 2%;
     background-color: black;
     color: white;
     padding: 25px;
     padding-top: 22px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 .search_bar{
-    width: 180px;
+    width: 350px;
     height: 45px;
     border-radius: 25px;
     padding: 5px;
     padding-left: 15px;
-    margin-bottom: 25px;
+    margin-left: 5%;
 }
 
 #filters h4{
@@ -44,12 +232,132 @@
 
 #container{
     width: 70%;
-    height: 70%;
+    height: 80%;
     margin: 0;
     padding: 0;
     margin-right: 10%;
     border: 1px solid black;
     background-color: rgba(82, 82, 82, 0.49);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 15px;
+}
+.player_analysis_container{
+    width: 90%;
+    height: 80%;
+    margin: 0;
+    padding: 0;
+   
+    border: 1px solid black;
+    background-color: rgba(82, 82, 82, 0.49);
+    border-radius: 15px;
+}
+
+.top_player_analysis_container{
+    
+    height: 50%;
+    width: 100%;
+    padding: 35px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.left_top_player_analysis_container{
+    background-color: #1B1B1B;
+    width: 41%;
+    height: 100%;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.left_top_player_analysis_container h4{
+    color: #DDDDDD;
+}
+
+.right_top_player_analysis_container{
+    background-color: #1B1B1B;
+    width: 55%;
+    height: 100%;
+    border-radius: 15px;
+}
+.right_top_player_analysis_container img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.top_main_player_info{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 50px;
+    font-size: 2em;
+
+}
+
+.top_main_player_info img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.bottom_main_player_info{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.bottom_main_player_info div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    color: #DDDDDD;
+    font-size: 1.2em;
+}
+.bottom_main_player_info h5{
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    font-weight: lighter;
+}
+
+
+.bottom_player_analysis_container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px 0 35px;
+}
+
+.bottom_player_analysis_container div{
+    background-color: #1B1B1B;
+    width: 22%;
+    height: 80%;
+    
+    border-radius: 15px;
+}
+.bottom_player_analysis_container div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+table{
+    width: 100%;
+    overflow: hidden;
+    border-top-right-radius: 25px;
+    
+}
+
+tbody{
+    width: 100%;
 }
 tr{
     background-color: white;
@@ -65,6 +373,8 @@ tr{
     border-bottom: 2px solid #000000;
     margin: auto auto;
     vertical-align: middle;
+    padding: 15px;
+    background-color: #DDDDDD;
 }
 .player_img{
     width: 50px;
@@ -76,11 +386,20 @@ tr{
 
 .players_table_complete{
     width: 100%;
-    height: 100vh;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.player_analysis_table{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 
 /*CHARTS*/

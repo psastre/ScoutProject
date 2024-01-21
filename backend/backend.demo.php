@@ -21,17 +21,21 @@ $queryTeam = "SELECT team.teamID, team.teamPhoto, team.teamName, league.leagueNa
 $rTeam = mysqli_query($conn, $queryTeam);
 
 $queryGame = "SELECT
-team.teamID,
-team.teamName,
-GROUP_CONCAT(game.GameID) AS GameIDs,
-GROUP_CONCAT(game.gameDate) AS Dates,
-GROUP_CONCAT(team.teamName) AS Equipos
+GROUP_CONCAT(goal.goalID) AS Goles,
+game.gameID AS GameIDs,
+game.gameDate AS Dates,
+SUBSTRING_INDEX(GROUP_CONCAT(team.teamName), ',', 1) AS Equipo1,
+SUBSTRING_INDEX(GROUP_CONCAT(team.teamName), ',', -1) AS Equipo2
+
+
 FROM
 game
 JOIN
 game_team ON game.gameID = game_team.game_id
 JOIN
 team ON team.teamID = game_team.team_id
+JOIN
+goal ON goal.goalGame = game.gameID 
 GROUP BY
 game.gameID";
 
@@ -40,28 +44,6 @@ $rGame = mysqli_query($conn, $queryGame);
 $rowGame = mysqli_fetch_assoc($rGame);
 $rowTeam = mysqli_fetch_assoc($rTeam);
 
-print_r($rowGame);
 
 
-SELECT
-  
-    hola.GameIDs,
-    hola.Dates,
-    SUBSTRING_INDEX(hola.Equipos, ',', 1) AS Equipo1,
-    SUBSTRING_INDEX(hola.Equipos, ',', -1) AS Equipo2
-FROM (
-SELECT
 
-GROUP_CONCAT(DISTINCT game.gameID SEPARATOR ', ') AS GameIDs,
-GROUP_CONCAT(DISTINCT game.gameDate SEPARATOR ', ') AS Dates,
-    
-GROUP_CONCAT(team.teamName) AS Equipos
-FROM
-game
-JOIN
-game_team ON game.gameID = game_team.game_id
-JOIN
-team ON team.teamID = game_team.team_id
-GROUP BY
-game.gameID
-    ) as hola;

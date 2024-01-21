@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -21,10 +22,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <body>
+    <div id="hero">
+        <?php require_once 'left_nav.php'; ?>
+
+    <div class="container_hero">
+        <div class="title_user_nav">
+            <div class="title_container"><h3>Jugadores</h3></div>
+            <div class="user_container"><a href=""><img src="../img/Iconos/user-circle-svgrepo-com(2).svg" alt=""></a></div>
+        </div>
+    
     <?php include_once("../backend/jsonCreator.php"); ?>
+
+    <input type="text" placeholder="Buscar..." class="search_bar" id="search_bar">
     <div class="players_table_complete">
         <div id="filters">
-        <input type="text" placeholder="Buscar..." class="search_bar" id="search_bar">
+        
             <h4>Filtros</h4>
             <div class="filter position_filter">
                 <span>Posicion</span><br/>
@@ -102,8 +114,8 @@
             </table>
         </div>
         </div>
-
-
+    </div>
+    </div>
 
         <script type="text/javascript">
             $(document).ready(function(){

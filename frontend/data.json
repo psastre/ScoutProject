@@ -22,5 +22,17 @@
         "nacionality": "Argentina",
         "gamesPlayed": "389",
         "foot": "DER"
+    },
+    {
+        "id": "3",
+        "photo": "Benedetto",
+        "name": "Raul",
+        "lastname": "Benedetto",
+        "age": "35",
+        "team": "2",
+        "position": "Ataque",
+        "nacionality": "Argentina",
+        "gamesPlayed": "250",
+        "foot": "IZQ"
     }
 ]
