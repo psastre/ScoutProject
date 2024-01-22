@@ -47,7 +47,7 @@
                   
         ?>
 
-        <div class="title_section"><h4>Player Analysis</h4> <a href="../frontend/compareselection.php?firstid=<?php echo $row["id"]; ?>">Compare</a></div>
+        <div class="title_section"><h4>Player Analysis</h4> <a href="../frontend/comparestest.php?firstid=<?php echo $row["id"]; ?>">Compare</a></div>
     
     
 
