@@ -8,7 +8,7 @@
                         <li><a href="">Player Database</a></li>
                         <li><a href="playerpage.php">Player Analysis</a></li>
                         <li><a href="comparetest.php">Comparative Analysis</a></li>
-                        <li><a href="matchpage.php">Matches</a></li>
+                        <li><a href="matchespage.php">Matches</a></li>
                     </ul>
                 </div>
             </div>

@@ -15,6 +15,9 @@ if(!$conn){
 $queryPlayer = "SELECT * FROM player";
 $rPlayer = mysqli_query($conn, $queryPlayer);
 
+$queryGame = "SELECT * FROM game";
+$rGame = mysqli_query($conn, $queryGame);
+/*
 
 $queryTeam = "SELECT team.teamID, team.teamPhoto, team.teamName, league.leagueName FROM team
     INNER JOIN  league ON team.teamLeague = league.leagueID";
@@ -45,5 +48,5 @@ $rowGame = mysqli_fetch_assoc($rGame);
 $rowTeam = mysqli_fetch_assoc($rTeam);
 
 
-
+*/
 

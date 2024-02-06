@@ -69,13 +69,19 @@
             <h5>Age</h5><h4><?php echo $row["age"]; ?></h4>
             </div>
             <div>
-            <h5>Club</h5><h4>Club</h4>
+            <h5>Club</h5><h4><?php 
+                            $teamId = $row['team'];
+                            $queryTeamId = "SELECT teamName FROM team WHERE teamID = '" . $teamId ."'";
+                            $rTeamId = mysqli_query($conn, $queryTeamId);
+                            $rowTeamId = mysqli_fetch_assoc($rTeamId);
+                            echo $rowTeamId['teamName'];
+                            ?></h4>
             </div>
             <div>
-            <h5>Position</h5><h4>Position</h4>
+            <h5>Position</h5><h4><?php echo $row["position"]; ?></h4>
             </div>
             <div>
-            <h5>Country</h5><h4></h4>
+            <h5>Country</h5><h4><?php echo $row["nationality"]; ?></h4>
             </div>
             
           </div>

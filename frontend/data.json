@@ -7,7 +7,7 @@
         "age": "37",
         "team": "1",
         "position": "Arquero",
-        "nacionality": "Argentina",
+        "nationality": "Argentina",
         "gamesPlayed": "389",
         "foot": "IZQ"
     },
@@ -19,7 +19,7 @@
         "age": "36",
         "team": "2",
         "position": "D",
-        "nacionality": "Argentina",
+        "nationality": "Argentina",
         "gamesPlayed": "389",
         "foot": "DER"
     },
@@ -31,7 +31,7 @@
         "age": "35",
         "team": "2",
         "position": "Ataque",
-        "nacionality": "Argentina",
+        "nationality": "Argentina",
         "gamesPlayed": "250",
         "foot": "IZQ"
     }

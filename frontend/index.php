@@ -95,9 +95,15 @@
                     <td><img class="player_img" src="../img/<?php echo $row['lastname']; ?>.jpg" alt=""></td>
                         <td><?php echo $row['name'] ." ". $row['lastname']; ?></td>
                         <td><?php echo $row['age']; ?></td>
-                        <td><?php echo $row['team']; ?></td>
+                        <td><?php 
+                            $teamId = $row['team'];
+                            $queryTeamId = "SELECT teamName FROM team WHERE teamID = '" . $teamId ."'";
+                            $rTeamId = mysqli_query($conn, $queryTeamId);
+                            $rowTeamId = mysqli_fetch_assoc($rTeamId);
+                            echo $rowTeamId['teamName'];
+                            ?></td>
                         <td><?php echo $row['position']; ?></td>
-                        <td><?php echo $row['nacionality']; ?></td>
+                        <td><?php echo $row['nationality']; ?></td>
                         <td><?php echo $row['gamesPlayed']; ?></td>
                         <td><?php echo $row['foot']; ?></td>
                         <td>
