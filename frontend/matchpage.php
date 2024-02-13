@@ -1,4 +1,5 @@
 
+
 <?php
     include_once("../backend/backend.demo.php");
 ?>
@@ -36,9 +37,9 @@
         if(isset($_GET["id"])){ 
           include_once("../backend/backend.demo.php");
 
-          $playerid = $_GET["id"];
+          $gameid = $_GET["id"];
 
-          $query= "SELECT * FROM player WHERE id = $playerid"; 
+          $query= "SELECT * FROM game WHERE gameID = $gameid"; 
 
           $result = mysqli_query($conn, $query);
           $count = mysqli_num_rows($result);
@@ -46,61 +47,74 @@
                   
         ?>
 
-        <div class="title_section"><h4>Player Analysis</h4> <a href="../frontend/comparestest.php?firstid=<?php echo $row["id"]; ?>">Compare</a></div>
+        <div class="title_section"><h4>Match</h4></div>
     
     
 
    
-    <div class="player_analysis_table">
-       
+    <div class="match_analysis_table">
+      <div class="match_teams">
+        <div class="match_team_first">
+          <div class="match_team_shield">
+            <?php 
+                           
+                           $queryGameId = "SELECT teamName, teamID FROM team 
+                           JOIN game_team 
+                           ON team.teamID = game_team.team_id
+                           WHERE game_id = '" . $gameid ."'
+                           LIMIT 1 OFFSET 1";
+                           $rGameId = mysqli_query($conn, $queryGameId);
+                           while($rowGameId = mysqli_fetch_assoc($rGameId)){
+                               echo $rowGameId['teamName'] 
+                           
 
-        <div class="player_analysis_container" >
-          <div class="top_player_analysis_container">
-          <div class="left_top_player_analysis_container">
+                             
 
-           
-          <div class="top_main_player_info">
-            <img src="../img/<?php echo $row['lastname']; ?>.jpg" alt="">
-            <h4><?php echo $row["name"]; ?> <?php echo $row["lastname"]; ?></h4>
+            ?>
+          
           </div>
-          <div class="bottom_main_player_info">
-            <div>
-            <h5>Age</h5><h4><?php echo $row["age"]; ?></h4>
-            </div>
-            <div>
-            <h5>Club</h5><h4><?php 
-                            $teamId = $row['team'];
-                            $queryTeamId = "SELECT teamName FROM team WHERE teamID = '" . $teamId ."'";
-                            $rTeamId = mysqli_query($conn, $queryTeamId);
-                            $rowTeamId = mysqli_fetch_assoc($rTeamId);
-                            echo $rowTeamId['teamName'];
-                            ?></h4>
-            </div>
-            <div>
-            <h5>Position</h5><h4><?php echo $row["position"]; ?></h4>
-            </div>
-            <div>
-            <h5>Country</h5><h4><?php echo $row["nationality"]; ?></h4>
-            </div>
-            
+          <div class="match_team_score">
+            <?php
+            $teamid= $rowGameId['teamID'];
+          $queryGameScoreSum = "SELECT Count(goalID) AS goalsC FROM goal
+                           WHERE goalGame =  '" . $gameid ."' 
+                           AND goalTeam =  '" . $teamid ."' ";
+           $rScoreId = mysqli_query($conn, $queryGameScoreSum);
+           while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+           echo $rowScoreId['goalsC'] ;
+           };
+                          };
+            ?>
           </div>
-        <?php }else{echo "no se encontro registro";}; ?>
-
-
-        </div>  
-        <div class="right_top_player_analysis_container">
-          <img src="../img/graph1.jpg" alt="">
         </div>
-        </div>  
-        <div class="bottom_player_analysis_container">
-          <div class="right_bottom_player_analysis_container"><img src="../img/graph2.jpg" alt=""></div>
-          <div class="middle_bottom_player_analysis_container"><img src="../img/graph3.jpg" alt=""></div>
-          <div class="middle_bottom_player_analysis_container"><img src="../img/graph4.jpg" alt=""></div>
-          <div class="left_bottom_player_analysis_container"><img src="../img/graph5.jpg" alt=""></div>
+        -
+        <div class="match_team_second">
+          <div class="match_team_score"></div>
+          <div class="match_team_shield"></div>
         </div>
-        
 
       </div>
+
+    
+   
+
+       
+         
+          
+
+           
+         
+          
+         <?php }else{echo "no se encontro registro";}; ?>
+
+
+        
+        
+        
+        
+        
+
+      
         </div>
     </div>
     </div>
