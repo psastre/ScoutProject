@@ -487,9 +487,88 @@ tr{
 
 /*MATCH*/
 
-.match_team_shield{
-    background-color: white;
+.match_analysis_container{
+    background-color:rgba(82, 82, 82, 0.49);
+    width: 100%;
+    height: 200vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+
 }
+.match_analysis_table{
+    background-color: white;
+    height: 80%;
+    width: 90%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.match_teams{
+    height: 10%;
+    width: 90%;
+    background-color: #1B1B1B;
+    color: #DDDDDD;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+}
+.match_team_first , .match_team_second{
+    height: 100%;
+    width: 50%;
+    display: flex;
+}
+
+.match_team_first{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.match_team_second{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.match_team_separador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.match_details{
+    background-color: #DDDDDD;
+    height: 80%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.match_details_team_first, .match_details_team_second{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.match_details_team_first_scs, .match_details_team_first_lineup,
+.match_details_team_second_scs, .match_details_team_second_lineup
+ {
+    width: 50%;
+    height: 90%;
+    margin: 5px;
+    background-color: #1B1B1B;
+}
+
+
+
+
+
+
 
 
 
