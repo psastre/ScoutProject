@@ -123,13 +123,19 @@
                   while($rowGameId = mysqli_fetch_assoc($rGameId)){ 
                       $teamid= $rowGameId['teamID'];
                     $queryGameScoreSum = 
-                    "SELECT Count(player.playerID) AS goalsPC , player.name , FROM goal
+                    "SELECT  player.name AS playerName,
+                    player.lastname AS playerLastName,
+                    goalTime 
+                    FROM goal
                     JOIN player ON goal.goalPlayer = player.id
-                     WHERE goalGame =  '" . $gameid ."' 
-                     AND goalTeam =  '" . $teamid ."' ";
+                    WHERE goalGame =  '" . $gameid ."' 
+                    AND goalTeam =  '" . $teamid ."' ";
                     $rScoreId = mysqli_query($conn, $queryGameScoreSum);
                     while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
-                    echo $rowScoreId['goalsC'] ;
+                    echo $rowScoreId['playerName'] ;
+                    echo $rowScoreId['playerLastName'] ;
+                    echo $rowScoreId['goalTime'] ;
+                    
                     };
                   };               ?>                                
                 <div class="match_details_team_first_scs">
