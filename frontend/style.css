@@ -547,6 +547,7 @@ tr{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #DDDDDD;
 }
 
 .match_details_team_first, .match_details_team_second{
@@ -564,7 +565,14 @@ tr{
     background-color: #1B1B1B;
 }
 
-
+.match_detail_score_title{
+    padding: 10px;
+    padding-bottom: 10px;
+    border-top: solid 1px #DDDDDD ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 
