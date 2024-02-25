@@ -44,7 +44,7 @@
             $row = mysqli_fetch_assoc($result)
                   
         ?>
-        <div class="title_section"><h4>Match</h4></div>
+        <div class="title_section" style="width:50%;"><h4>Match</h4></div>
         <div class="match_analysis_container">
           <div class="match_analysis_table">
             <div class="match_teams">
@@ -80,7 +80,7 @@
               <div class="match_team_separador">-</div>
               <div class="match_team_second">
                 <?php 
-                  $queryGameSecondTeam = "SELECT teamName, teamID FROM team 
+                  $queryGameSecondTeam = "SELECT teamName, teamID , teamPhoto FROM team 
                   JOIN game_team 
                   ON team.teamID = game_team.team_id
                   WHERE game_id = '" . $gameid ."'
@@ -102,8 +102,9 @@
                   ?>
                 </div>
                 <div class="match_team_shield">
+                <img class="player_img" src="../img/<?php echo $rowGameSecondTeam['teamPhoto']; ?>.jpg" alt="">
                   <?php
-                    echo $rowGameSecondTeam['teamName'] ;
+                    
                   };
                     ?>                                               
                 </div>
@@ -137,11 +138,13 @@
                       AND goalTeam =  '" . $teamid ."' ";
                       $rScoreId = mysqli_query($conn, $queryGameScoreSum);
                       while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                      echo ' - ';
                       echo $rowScoreId['playerName'] ;
+                      echo ' ';
                       echo $rowScoreId['playerLastName'] ;
-                    
+                      echo ' - ';
                       echo $rowScoreId['goalTime'] ;
-                      ?> </br><?php
+                      ?> </br></br><?php
                       
                       };
                     };               ?>       
@@ -169,11 +172,13 @@
                       AND yellowCardTeam =  '" . $teamid ."' ";
                       $rScoreId = mysqli_query($conn, $queryGameScoreSum);
                       while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
-                      echo "-".$rowScoreId['playerName'] ;
+                      echo ' - ';
+                      echo $rowScoreId['playerName'] ;
+                      echo ' ';
                       echo $rowScoreId['playerLastName'] ;
-                    
+                      echo ' - ';
                       echo $rowScoreId['yellowCardTime'] ;
-                      ?> </br><?php
+                      ?> </br></br><?php
                       
                       };
                     };               ?>       
@@ -200,9 +205,11 @@
                       AND redCardTeam =  '" . $teamid ."' ";
                       $rScoreId = mysqli_query($conn, $queryGameScoreSum);
                       while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                      echo ' - ';
                       echo $rowScoreId['playerName'] ;
+                      echo ' ';
                       echo $rowScoreId['playerLastName'] ;
-                    
+                      echo ' - ';
                       echo $rowScoreId['redCardTime'] ;
                       ?> </br><?php
                       
@@ -235,17 +242,35 @@
                       AND substitutionsTeam =  '" . $teamid ."' ";
                       $rScoreId = mysqli_query($conn, $queryGameScoreSum);
                       while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                        ?>
+                        <div class="match_detail_substitution">
+                        <div class="match_detail_substitution_players">
+                          <?php
+                        
                       echo $rowScoreId['playerOutgoingName'] ;
+                      echo ' ';
                       echo $rowScoreId['playerOutgoingLastName'] ;
+                      echo '</br>';
 
-                      ?> <p> x </p>   
-                      <?php
-                    
+                      ?> <p> x </p>
+                      
+                        <?php
+
                        echo $rowScoreId['playerIncomingName'] ;
+                       echo ' ';
                        echo $rowScoreId['playerIncomingLastName'] ;
-                       echo " ";
-                      echo $rowScoreId['substitutionsTime'] ;
-                      ?> </br><?php
+                       ?>
+                       </div>
+                        <div class="match_detail_substitution_time">
+                          <?php
+                        echo $rowScoreId['substitutionsTime'] ;
+                        
+                     
+                      
+                      
+                      ?></div>
+                      </div>   
+                       </br><?php
                       
                       };
                     };               ?>
@@ -306,31 +331,298 @@
                       $rScoreId = mysqli_query($conn, $query);
                       while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
                         for ($i = 1; $i <= 11; $i++) {
+
+                          echo "<div class='match_details_team_first_lineup_players_individual'>
+                          <div class='match_details_team_first_lineup_players_number'>";
+                          echo $i;
+                          echo " ";
+                          echo "</div>";
+                          echo "<div class='match_details_team_first_lineup_players_name'>";
+                          
                           echo $rowScoreId["lineupPlayer{$i}Name"];
                           echo " ";
                           echo $rowScoreId["lineupPlayer{$i}LastName"];
-                          echo "</br>";
+                          echo "</div></div>";
+                          
                       }
                       ?><div class="match_details_team_first_lineup_title">Substitutes</div>
                       <?php 
                         for ($i = 11; $i <= 18; $i++) {
+                          echo "<div class='match_details_team_first_lineup_players_individual'>
+                          <div class='match_details_team_first_lineup_players_number'>";
+                          echo $i;
+                          echo " ";
+                          echo "</div>";
+                          echo "<div class='match_details_team_first_lineup_players_name'>";
+                          
                           echo $rowScoreId["lineupPlayer{$i}Name"];
                           echo " ";
                           echo $rowScoreId["lineupPlayer{$i}LastName"];
-                          echo "</br>";
+                          echo "</div></div>";
                       }
                       
                       };
                     };               ?>            
                       
                   </div>
-                  <div class="match_details_team_first_lineup_title">Substitutes</div>
-                  <div class="match_details_team_first_lineup_substitutes"></div>
+                  
                 </div>
               </div>
+
+              <!-- SEGUNDO EQUIPO-->
+
               <div class="match_details_team_second">
-                <div class="match_details_team_first_scs"></div>
-                <div class="match_details_team_first_lineup"></div>
+
+              <div class="match_details_team_first_lineup">
+              <div class="match_details_team_first_lineup_title">
+                  <?php 
+                              
+                              $queryGameId = "SELECT teamName, teamID, teamPhoto FROM team 
+                                JOIN game_team 
+                                ON team.teamID = game_team.team_id
+                                WHERE game_id = '" . $gameid ."'
+                                LIMIT 1 OFFSET 1";
+                                $rGameId = mysqli_query($conn, $queryGameId);
+                                while($rowGameId = mysqli_fetch_assoc($rGameId)){
+                                  echo $rowGameId['teamName']; 
+                                }
+                                
+                              ?>
+                  </div>
+                  <div class="match_details_team_first_lineup_title">Lineup</div>
+                  <div class="match_details_team_first_lineup_players">
+                  <?php 
+                    $queryGameId = "SELECT teamName, teamID, teamPhoto FROM team 
+                    JOIN game_team 
+                    ON team.teamID = game_team.team_id
+                    WHERE game_id = '" . $gameid ."'
+                    LIMIT 1 OFFSET 1";
+                    $rGameId = mysqli_query($conn, $queryGameId);
+                    while($rowGameId = mysqli_fetch_assoc($rGameId)){ 
+                        $teamid= $rowGameId['teamID'];
+                        $query = "SELECT ";
+
+                        for ($i = 1; $i <= 18; $i++) {
+                            $query .= "player{$i}.name AS lineupPlayer{$i}Name, ";
+                            $query .= "player{$i}.lastname AS lineupPlayer{$i}LastName, ";
+                        }
+                        
+                        $query = rtrim($query, ", ");
+                        
+                        $query .= " FROM lineup ";
+                        
+                        for ($i = 1; $i <= 18; $i++) {
+                            $query .= "JOIN player player{$i} ON lineup.lineupPlayer{$i} = player{$i}.id ";
+                        }
+                        
+                        $query .= "WHERE lineupGame = '" . $gameid . "' ";
+                        $query .= "AND lineupTeam = '" . $teamid . "' ";
+                        
+                        
+                      $rScoreId = mysqli_query($conn, $query);
+                      while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                        for ($i = 1; $i <= 11; $i++) {
+
+                          echo "<div class='match_details_team_first_lineup_players_individual'>
+                          <div class='match_details_team_first_lineup_players_number'>";
+                          echo $i;
+                          echo " ";
+                          echo "</div>";
+                          echo "<div class='match_details_team_first_lineup_players_name'>";
+                          
+                          echo $rowScoreId["lineupPlayer{$i}Name"];
+                          echo " ";
+                          echo $rowScoreId["lineupPlayer{$i}LastName"];
+                          echo "</div></div>";
+                          
+                      }
+                      ?><div class="match_details_team_first_lineup_title">Substitutes</div>
+                      <?php 
+                        for ($i = 11; $i <= 18; $i++) {
+                          echo "<div class='match_details_team_first_lineup_players_individual'>
+                          <div class='match_details_team_first_lineup_players_number'>";
+                          echo $i;
+                          echo " ";
+                          echo "</div>";
+                          echo "<div class='match_details_team_first_lineup_players_name'>";
+                          
+                          echo $rowScoreId["lineupPlayer{$i}Name"];
+                          echo " ";
+                          echo $rowScoreId["lineupPlayer{$i}LastName"];
+                          echo "</div></div>";
+                      }
+                      
+                      };
+                    };               ?>            
+                      
+                  </div>
+
+              </div>
+
+                <div class="match_details_team_first_scs">
+                <div class="match_detail_score_title">Score</div>
+                    <div class="match_detail_score">
+                    <?php 
+                    $queryGameId = "SELECT teamName, teamID, teamPhoto FROM team 
+                    JOIN game_team 
+                    ON team.teamID = game_team.team_id
+                    WHERE game_id = '" . $gameid ."'
+                    LIMIT 1 OFFSET 0";
+                    $rGameId = mysqli_query($conn, $queryGameId);
+                    while($rowGameId = mysqli_fetch_assoc($rGameId)){ 
+                        $teamid= $rowGameId['teamID'];
+                      $queryGameScoreSum = 
+                      "SELECT  player.name AS playerName,
+                      player.lastname AS playerLastName,
+                      goalTime 
+                      FROM goal
+                      JOIN player ON goal.goalPlayer = player.id
+                      WHERE goalGame =  '" . $gameid ."' 
+                      AND goalTeam =  '" . $teamid ."' ";
+                      $rScoreId = mysqli_query($conn, $queryGameScoreSum);
+                      while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                      echo ' - ';
+                      echo $rowScoreId['playerName'] ;
+                      echo ' ';
+                      echo $rowScoreId['playerLastName'] ;
+                      echo ' - ';
+                      echo $rowScoreId['goalTime'] ;
+                      ?> </br></br><?php
+                      
+                      };
+                    };               ?>       
+                      
+                    </div>
+                    
+                    <div class="match_detail_score_title">Yellow Card</div>
+                    <div class="match_detail_score">
+                    <?php 
+                    $queryGameId = "SELECT teamName, teamID, teamPhoto FROM team 
+                    JOIN game_team 
+                    ON team.teamID = game_team.team_id
+                    WHERE game_id = '" . $gameid ."'
+                    LIMIT 1 OFFSET 0";
+                    $rGameId = mysqli_query($conn, $queryGameId);
+                    while($rowGameId = mysqli_fetch_assoc($rGameId)){ 
+                        $teamid= $rowGameId['teamID'];
+                      $queryGameScoreSum = 
+                      "SELECT  player.name AS playerName,
+                      player.lastname AS playerLastName,
+                      yellowCardTime
+                      FROM yellowcard
+                      JOIN player ON yellowcard.yellowCardPlayer = player.id
+                      WHERE yellowCardGame =  '" . $gameid ."' 
+                      AND yellowCardTeam =  '" . $teamid ."' ";
+                      $rScoreId = mysqli_query($conn, $queryGameScoreSum);
+                      while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                      echo ' - ';
+                      echo $rowScoreId['playerName'] ;
+                      echo ' ';
+                      echo $rowScoreId['playerLastName'] ;
+                      echo ' - ';
+                      echo $rowScoreId['yellowCardTime'] ;
+                      ?> </br></br><?php
+                      
+                      };
+                    };               ?>       
+                      
+                    </div>
+                    <div class="match_detail_score_title">Red Card</div>
+                    <div class="match_detail_score">
+                    <?php 
+                    $queryGameId = "SELECT teamName, teamID, teamPhoto FROM team 
+                    JOIN game_team 
+                    ON team.teamID = game_team.team_id
+                    WHERE game_id = '" . $gameid ."'
+                    LIMIT 1 OFFSET 0";
+                    $rGameId = mysqli_query($conn, $queryGameId);
+                    while($rowGameId = mysqli_fetch_assoc($rGameId)){ 
+                        $teamid= $rowGameId['teamID'];
+                      $queryGameScoreSum = 
+                      "SELECT  player.name AS playerName,
+                      player.lastname AS playerLastName,
+                      redCardTime
+                      FROM redcard
+                      JOIN player ON redcard.redCardPlayer = player.id
+                      WHERE redCardGame =  '" . $gameid ."' 
+                      AND redCardTeam =  '" . $teamid ."' ";
+                      $rScoreId = mysqli_query($conn, $queryGameScoreSum);
+                      while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                      echo ' - ';
+                      echo $rowScoreId['playerName'] ;
+                      echo ' ';
+                      echo $rowScoreId['playerLastName'] ;
+                      echo ' - ';
+                      echo $rowScoreId['redCardTime'] ;
+                      ?> </br><?php
+                      
+                      };
+                    };               ?>       
+                      
+                    </div>
+                    <div class="match_detail_score_title">Substitutions</div>
+                    <div class="match_detail_score">
+                    <?php 
+                    $queryGameId = "SELECT teamName, teamID, teamPhoto FROM team 
+                    JOIN game_team 
+                    ON team.teamID = game_team.team_id
+                    WHERE game_id = '" . $gameid ."'
+                    LIMIT 1 OFFSET 0";
+                    $rGameId = mysqli_query($conn, $queryGameId);
+                    while($rowGameId = mysqli_fetch_assoc($rGameId)){ 
+                        $teamid= $rowGameId['teamID'];
+                      $queryGameScoreSum = 
+                      "SELECT  
+                      player_outgoing.name AS playerOutgoingName,
+                      player_outgoing.lastname AS playerOutgoingLastName,
+                      player_incoming.name AS playerIncomingName,
+                      player_incoming.lastname AS playerIncomingLastName,
+                      substitutionsTime
+                      FROM substitutions
+                      JOIN player player_outgoing ON substitutions.substitutionsOutgoing = player_outgoing.id
+                      JOIN player player_incoming ON substitutions.substitutionsIncoming = player_incoming.id
+                      WHERE substitutionsGame =  '" . $gameid ."' 
+                      AND substitutionsTeam =  '" . $teamid ."' ";
+                      $rScoreId = mysqli_query($conn, $queryGameScoreSum);
+                      while($rowScoreId = mysqli_fetch_assoc($rScoreId)){
+                        ?>
+                        <div class="match_detail_substitution">
+                        <div class="match_detail_substitution_players">
+                          <?php
+                        
+                      echo $rowScoreId['playerOutgoingName'] ;
+                      echo ' ';
+                      echo $rowScoreId['playerOutgoingLastName'] ;
+                      echo '</br>';
+
+                      ?> <p> x </p>
+                      
+                        <?php
+
+                       echo $rowScoreId['playerIncomingName'] ;
+                       echo ' ';
+                       echo $rowScoreId['playerIncomingLastName'] ;
+                       ?>
+                       </div>
+                        <div class="match_detail_substitution_time">
+                          <?php
+                        echo $rowScoreId['substitutionsTime'] ;
+                        
+                     
+                      
+                      
+                      ?></div>
+                      </div>   
+                       </br><?php
+                      
+                      };
+                    };               ?>
+                     
+
+                      
+                    </div>
+                </div>
+                
               </div>
             </div> 
             <?php }else{echo "no se encontro registro";}; ?>

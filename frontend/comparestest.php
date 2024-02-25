@@ -122,7 +122,7 @@
                         <td><?php echo $row['age']; ?></td>
                         <td><?php echo $row['team']; ?></td>
                         <td><?php echo $row['position']; ?></td>
-                        <td><?php echo $row['nacionality']; ?></td>
+                        <td><?php echo $row['nationality']; ?></td>
                         <td><?php echo $row['gamesPlayed']; ?></td>
                         <td><?php echo $row['foot']; ?></td>
                         <td>
