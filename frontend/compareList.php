@@ -1,4 +1,6 @@
 <?php
+    
+    session_start();
     include_once("../backend/backend.demo.php");
 ?>
 
@@ -28,40 +30,22 @@
     <div class="container_hero">
         <div class="title_user_nav">
 
-        <?php 
-  //include_once("../backend/players.back.php");
-  if(isset($_GET["firstid"])){ 
-    include_once("../backend/backend.demo.php");
+        
 
-    $playerid = $_GET["firstid"];
-
-    $query= "SELECT * FROM player WHERE id = $playerid"; 
-
-    $result = mysqli_query($conn, $query);
-    $count = mysqli_num_rows($result);
-    $row = mysqli_fetch_assoc($result)
-            
-        ?>
-    <div class="title_container"><h3>Compare  </h3>
-    
-    <h4><?php echo $row["name"]; ?>  <?php echo $row["lastname"]; ?></h4>
-    
-    
-    </div>
-    
-  <?php }else{echo "no se encontro registro";}; ?>
-            
-            <div class="user_container"><a href=""><img src="../img/Iconos/user-circle-svgrepo-com(2).svg" alt=""></a></div>
-            
+            <div class="title_container"><h3>Select the player for compare</h3></div>
+            <div class="user_container"><a href="formSignUp.php"><img src="../img/Iconos/user-circle-svgrepo-com(2).svg" alt=""></a>
+            <?php
+        if(isset($_SESSION["userEmail"])){
+                                    echo"<li><a href='usuario.php?section=general' id='userName_navbar'>" . $_SESSION["userName"] ."</a></li>";
+        } ?>
         </div>
 
-        <h3 class='select_compare_title'>Select the player to compare</h3>
+        </div>
     
     <?php include_once("../backend/jsonCreator.php"); ?>
 
     <input type="text" placeholder="Buscar..." class="search_bar" id="search_bar">
-    
-    <div class="players_table_complete" style= 'height: 72%;'>
+    <div class="players_table_complete">
         <div id="filters">
         
             <h4>Filtros</h4>
@@ -122,15 +106,19 @@
                     <td><img class="player_img" src="../img/<?php echo $row['lastname']; ?>.jpg" alt=""></td>
                         <td><?php echo $row['name'] ." ". $row['lastname']; ?></td>
                         <td><?php echo $row['age']; ?></td>
-                        <td><?php echo $row['team']; ?></td>
+                        <td><?php 
+                            $teamId = $row['team'];
+                            $queryTeamId = "SELECT teamName FROM team WHERE teamID = '" . $teamId ."'";
+                            $rTeamId = mysqli_query($conn, $queryTeamId);
+                            $rowTeamId = mysqli_fetch_assoc($rTeamId);
+                            echo $rowTeamId['teamName'];
+                            ?></td>
                         <td><?php echo $row['position']; ?></td>
                         <td><?php echo $row['nationality']; ?></td>
                         <td><?php echo $row['gamesPlayed']; ?></td>
                         <td><?php echo $row['foot']; ?></td>
                         <td>
-                        <a href="http://localhost/ScoutingProject/frontend/comparefinal.php?firstid=<?php echo $playerid; ?>&secondid=<?php echo $row['id']; ?>" >
-                                 Select
-                             </a>
+                        <a href="../frontend/comparestest.php?firstid=<?php echo $row["id"]; ?>">Compare</a></div>
                         </td>
                         
                         
@@ -144,7 +132,65 @@
     </div>
     </div>
 
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var searchBar = ""
+                $("#search_bar").keyup(function(){
+                searchBar = $(this).val();
+                    
+                })
+            
+                $("#position_fetchval, #team_fetchval, #foot_fetchval, #search_bar" ).on('change keyup', function(){
+                    var positionValue = $("#position_fetchval").val();
+                    var teamValue = $("#team_fetchval").val();
+                    var footValue = $("#foot_fetchval").val();
+                    console.log(footValue);
+                    console.log(positionValue);
+                    console.log(teamValue);
+                    console.log(searchBar)
+            
+
+                    $.ajax({
+                        url:"fetch.php",
+                        type:"POST",
+                        data: {position: positionValue, team: teamValue, foot: footValue, searchBar: searchBar } ,
+                        
+                        beforeSend:function(){
+                            $(".container").html("<spam>Buscando...</spam>");
+                        },
+                        success: function(data){
+                            $(".container").html(data)
+                        }
+                    });
+                });
+            });
+
+        </script>
+        <!--
+    <div class="charts">
+    <canvas id="myChart"></canvas>
+    </div>
+    <script type="text/javascript" src="jsonChartScript.js"></script>
+    <script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+        labels: ['Boca', 'River', 'Racing'],
+        datasets: [{
+            label: '# of Votes',
+            data: teamCount,
+            borderWidth: 1
+        }]
+        },
     
+    });
+    
+    </script>
+-->
+
+
         
 </body>
 </html>

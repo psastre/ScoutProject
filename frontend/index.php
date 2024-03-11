@@ -1,4 +1,6 @@
 <?php
+    
+    session_start();
     include_once("../backend/backend.demo.php");
 ?>
 
@@ -27,8 +29,17 @@
 
     <div class="container_hero">
         <div class="title_user_nav">
+
+        
+
             <div class="title_container"><h3>Jugadores</h3></div>
-            <div class="user_container"><a href=""><img src="../img/Iconos/user-circle-svgrepo-com(2).svg" alt=""></a></div>
+            <div class="user_container"><a href="formSignUp.php"><img src="../img/Iconos/user-circle-svgrepo-com(2).svg" alt=""></a>
+            <?php
+        if(isset($_SESSION["userEmail"])){
+                                    echo"<h3 style='color:white'>" . $_SESSION["userName"] ."</h3>";
+        } ?>
+        </div>
+
         </div>
     
     <?php include_once("../backend/jsonCreator.php"); ?>
@@ -157,6 +168,7 @@
             });
 
         </script>
+        <!--
     <div class="charts">
     <canvas id="myChart"></canvas>
     </div>
@@ -178,7 +190,7 @@
     });
     
     </script>
-
+-->
 
 
         

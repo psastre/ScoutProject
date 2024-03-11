@@ -9,7 +9,8 @@
         "position": "Arquero",
         "nationality": "Argentina",
         "gamesPlayed": "389",
-        "foot": "IZQ"
+        "foot": "IZQ",
+        "clientCreateDate": ""
     },
     {
         "id": "2",
@@ -21,7 +22,8 @@
         "position": "D",
         "nationality": "Argentina",
         "gamesPlayed": "389",
-        "foot": "DER"
+        "foot": "DER",
+        "clientCreateDate": ""
     },
     {
         "id": "3",
@@ -33,6 +35,20 @@
         "position": "Ataque",
         "nationality": "Argentina",
         "gamesPlayed": "250",
-        "foot": "IZQ"
+        "foot": "IZQ",
+        "clientCreateDate": ""
+    },
+    {
+        "id": "4",
+        "photo": "",
+        "name": "Pedro",
+        "lastname": "Sasa",
+        "age": "34",
+        "team": "1",
+        "position": "option1",
+        "nationality": "Peru",
+        "gamesPlayed": "345",
+        "foot": "option1",
+        "clientCreateDate": "07\/03\/2024\r\n"
     }
 ]
